@@ -13,24 +13,26 @@ function siguientePregunta() {
     
 }
 sw=0;
+var varloDeRespuestas;
 function aceptarRespuesta1() {
     console.log("Inicio funcion"+contador);
     var respuesta = document.getElementById("formulario");
-    if (sw==0) {
-        console.log("Eliminacion de nombre");
-            document.getElementById("nombre").innerHTML="Nombre: "+respuesta[0].value;
+    if (sw==0) {//Controlar que sea la primiera pregunta
+            document.getElementById("nombre").innerHTML="Nombre: "+respuesta[0].value;//Asignamos el nombre del que realiza la practica
             respuesta[0].hidden=true//Ocultamos el input de nombre
         if(contador==0&&respuesta[1].checked){//1
-            document.getElementById("correcta").innerHTML="Correcta";
+            varloDeRespuestas = respuesta[1].value;
+            document.getElementById("correcta").innerHTML="Correcta ✔";
             sw=1;  
         }else{
             sw=1; 
-            document.getElementById("correcta").innerHTML="Incorrecta";
+            document.getElementById("correcta").innerHTML="Incorrecta ❌";
         }
     }else{//PARA EL FORMULARIO DESDE PHP
         console.log("SW= "+sw);
         if(contador == 1 && respuesta[2].checked){//2
             document.getElementById("correcta").innerHTML="Correcta ✔"; 
+            varloDeRespuestas = respuesta[2].value;
         }else if(contador == 2 && respuesta[4].checked){//3
             document.getElementById("correcta").innerHTML="Correcta ✔"; 
         }else if(contador == 3 && respuesta[2].checked){//4
@@ -51,14 +53,28 @@ function aceptarRespuesta1() {
             document.getElementById("correcta").innerHTML="Incorrecta ❌"; 
         }
     }
+    RespuestaSelecionada();
+    console.log(`Respuesta selecionada ${respuestas[contador]} de la pregunta ${contador+1}`);
+    //console.log(respuestas[contador]);
     document.getElementById("aceptar").disabled=true;
     
+}
+
+function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio buttons
+    var formularioRespuestas = document.forms[0].respuesta;//Obtenemos la cantidad de elemtentos del formulario con name "Respuesta"
+    for (let index = 0; index < formularioRespuestas.length; index++) {//Recorremos todos los elementos
+        if (formularioRespuestas[index].checked) {//Verificamos cual tiene el atributo cheked("Selecionado")
+            respuestas.push(formularioRespuestas[index].value);//Agregamos el valor del input al array
+            break;
+            }
+    } 
 }
 
 
 window.onload = function () {
     document.getElementById("siguiente").onclick = siguientePregunta;
     document.getElementById("aceptar").onclick = aceptarRespuesta1;
+    //document.getElementById("aceptar").onclick = RespuestaSelecionada;
 
 }
 
