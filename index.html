@@ -8,9 +8,11 @@
     
 </head>
 <body>
+    <h1>Parcial 1 Ciencias Naturales</h1>
+   
    <!-- <form action="preguntas.php" method="post"> -->
-    <form id="formulario"action="tratadatos.php" method="POST">
-        <label id="nombre" for="nombre">Nombre </label><input type="text" name="nombre">
+       <form id="formulario"action="preguntas.php" method="GET" >
+           <label id="nombre" for="nombre">Nombre </label><input type="text" name="nombre">
         <h4 id="pregunta">1- ¿En qué estado se encuentra el agua de los glaciares?</h4>
         <input type="radio" value="1" name="respuesta" > <label >1- Solido </label> <br>
         <input type="radio" value="2" name="respuesta"> <label >2- Liquido </label><br>
@@ -19,16 +21,14 @@
         <p id="correcta"></p>
         <input id="aceptar" type="button" value="Aceptar Respuesta">
         <!-- <input id="siguiente" type="submit" value="Siguiente pregunta"> -->
-        <input id="siguiente" type="submit" value="Siguiente pregunta">
-        <input id="enviar" type="submit" value="Enviar datos" style="visibility: hidden;">
-
+        <input id="siguiente" type="button" value="Siguiente pregunta">
     </form>
-    <div id="resultados" style="visibility: hidden;">
-            <h2 name="aaa" id="pts">Puntos Obtenidos: </h2>
-            <h2 id="tiempo">Puntos Obtenidos: </h2>
-    </div>
-    <p id='cont' style='visibility: hidden;'>0</p>
-
+    <form id="resultados" action="tratadatos.php" method="POST" style="visibility: hidden;">
+        <h2 id="pts">Puntos Obtenidos: </h2>
+        <h2 id="tiempo">Puntos Obtenidos: </h2>
+        <input type="text" name="caja_valor" id="caja_valor" value="" style="visibility: hidden;">
+        <input type="submit" value="Guardar">
+        </form>
 
 </body>
 </html>
