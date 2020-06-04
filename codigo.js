@@ -20,6 +20,8 @@ function siguientePregunta() {
             console.log("aaa");
             console.log(contador);
             mostrarResultado(contador)
+            Asignaropciones(contador);
+            contador++;
         }else{//html
             if (document.getElementById("aceptar").disabled == true) {
             document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
@@ -32,6 +34,7 @@ function siguientePregunta() {
                 alert("Antes debes aceptar la respuesta ")
             }
         }
+        
         if(contador==9){
             document.getElementById("siguiente").style.display='none';
             if (document.getElementById("exit")) {//Si existe el id exit en el documento tratadatos php
@@ -40,7 +43,6 @@ function siguientePregunta() {
         } 
     
 }
-    
 sw=0;
 function aceptarRespuesta() {
     //console.log("Inicio funcion"+contador);
@@ -93,7 +95,7 @@ function aceptarRespuesta() {
             finalMinuto=hora2.getMinutes();
             totalminutos= finalMinuto-inicioMinuto;
             fechaTemina=hora2.getDay()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
-            horaTemina = hora2.getHours()+":"+hora2.getMinutes();
+            horaTemina =((hora2.getHours() + 11) % 12 + 1)+":"+hora2.getMinutes();
             enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,horaTemina,totalminutos);
             document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
             document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
@@ -103,12 +105,11 @@ function aceptarRespuesta() {
     alert("Debe seleccionar una opción antes de aceptar su respuesta")
     }
 }
-
 function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio buttons
     var formularioRespuestas = document.forms[0].respuesta;//Obtenemos la cantidad de elemtentos del formulario con name "Respuesta"
     for (let index = 0; index < formularioRespuestas.length; index++) {//Recorremos todos los elementos
         if (formularioRespuestas[index].checked) {//Verificamos cual tiene el atributo cheked("Selecionado")
-            respuestasPrapreguntas+=formularioRespuestas[index].value; 
+            respuestasPrapreguntas+=formularioRespuestas[index].value+" "; 
             break;
             }
     } 
@@ -137,8 +138,8 @@ function uncheck(){//Cambiamos el atributo checked a false
         radiobuton[4].checked = false; 
     }
     
- }
- function mostrarResultado(contador) { 
+}
+function mostrarResultado(contador) { 
     var respuesta = document.getElementById("formularioresuelto");
     if(contador == 0  ){//2
         respuesta[1].checked = true
