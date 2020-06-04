@@ -10,6 +10,7 @@ var finalMinuto;
 var totalminutos;
 var resultadoFinal;
 var respuestasPrapreguntas="";
+var fechaTemina;
 function siguientePregunta() {
     document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
     contador++;
@@ -79,18 +80,19 @@ function aceptarRespuesta() {
         var hora2 = new Date();
         finalMinuto=hora2.getMinutes();
         totalminutos= finalMinuto-inicioMinuto;
-        console.log(inicioMinuto, finalMinuto);
+        fechaTemina=hora2.getDay()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
+        enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,totalminutos);
         document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
         document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
         console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${totalminutos}min`);
+       /* console.log(inicioMinuto, finalMinuto);
+        //----------------------------------------------------------------------
         //respuestas.forEach(element => respuestasPrapreguntas+=" ");
         resultadoFinal="Nombre: "+nombreEstudiante+" Puntos obtenidos: "+puntosObtenidos+" Minutos de prueba: "+totalminutos +" Respuestas "+respuestasPrapreguntas;
         console.log(resultadoFinal);
         //+" Puntos obtenidos: "+puntosObtenidos+" Minutos de prueba: "+finalMinuto-inicioMinuto;
-        document.getElementById("caja_valor").value = resultadoFinal;
+        document.getElementById("caja_valor").value = resultadoFinal;*/
     }
-    
-    
 }
 
 function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio buttons
@@ -98,10 +100,16 @@ function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio button
     for (let index = 0; index < formularioRespuestas.length; index++) {//Recorremos todos los elementos
         if (formularioRespuestas[index].checked) {//Verificamos cual tiene el atributo cheked("Selecionado")
             respuestasPrapreguntas+=formularioRespuestas[index].value; 
-            //respuestas.push(formularioRespuestas[index].value);//Agregamos el valor del input al array
             break;
             }
     } 
+}
+function enviarValores(nm,resp,pts,fech,tiemT) {
+    document.getElementById("nombre_php").value = nm;//Nombre
+    document.getElementById("respuestas_php").value = resp;//Nombre
+    document.getElementById("puntos_php").value = pts;//Nombre
+    document.getElementById("fechatemina_php").value = fech;//Nombre
+    document.getElementById("tiempotrascurido_php").value = tiemT;//Nombre
 }
 
 
