@@ -19,7 +19,6 @@ function siguientePregunta() {
 sw=0;
 var varloDeRespuestas;
 function aceptarRespuesta() {
-    console.log("En el aceptarRespuesta"+contador);
     //console.log("Inicio funcion"+contador);
     var respuesta = document.getElementById("formulario");
     nombreEstudiante=respuesta[0].value;
@@ -62,15 +61,13 @@ function aceptarRespuesta() {
     }
     //RespuestaSelecionada();
     document.getElementById("aceptar").disabled=true;
-    if (contador==7) {//Mostramos los resultados cuando haceptamos la ultima pregunta
-        console.log("aaaaaaaaaaaaaaaaaaaa");
-        
-        //var hora2 = new Date();
-        //finalMinuto=hora2.getMinutes();
-       // console.log(inicioMinuto, finalMinuto);
-        //document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
-        //document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
-        //console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${finalMinuto-inicioMinuto}min`);
+    if (contador==9) {//Mostramos los resultados cuando haceptamos la ultima pregunta
+        var hora2 = new Date();
+        finalMinuto=hora2.getMinutes();
+        console.log(inicioMinuto, finalMinuto);
+        document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
+        document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
+        console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${finalMinuto-inicioMinuto}min`);
         
     }
     
@@ -94,7 +91,7 @@ function enviarDatoshtml() {
 
 window.onload = function () {
     contador=document.getElementById("cont").textContent;
-    console.log("En el onload"+contador);
+    //console.log("En el onload"+contador);
     hora = new Date();
     inicioMinuto=hora.getMinutes();
     document.getElementById("siguiente").onclick = siguientePregunta;//Para el boton Siguiete pregunta

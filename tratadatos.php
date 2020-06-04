@@ -35,6 +35,27 @@
     <h2 name='aaa' id='pts'>Puntos Obtenidos: </h2>
     <h2 id='tiempo'>Puntos Obtenidos: </h2>
 </div>    ");
+echo"<script>
+window.onload = function () {
+    document.getElementById('aceptar').onclick = RespuestaSelecionada;//Para el boton Aceptar Respuesta
+   
+    
+}
+    </script>";
+$valorRespuesta;
+    //Obtenemos el valor de check del radio buton
+echo"<script> function RespuestaSelecionada() {
+    document.getElementById('aceptar').disabled=true;
+var formularioRespuestas = document.forms[0].respuesta;
+for (let index = 0; index < formularioRespuestas.length; index++) {
+    console.log('aaaaaaaaaaaaaaaaaaaa**');
+    if (formularioRespuestas[index].checked) {
+        
+        console.log('Pregunta selecionada'+formularioRespuestas[index].value);
+        break;
+        }
+    }
+}</script>";
 
 
     aumentar($visitante);
@@ -60,7 +81,6 @@
             fclose($f);
         }
     }
-?>
-    
+?>    
 </body>
 </html>
