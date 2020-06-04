@@ -26,3 +26,17 @@ Fecha que termino practica: 4/6/2020
 Hora que termino practica: 2:18
 Tiempo que tardo la practica: 1
 -----------------------------------
+Nombre: rr
+Respuestas:1 2 4 4 3 4 1 4 3 2 
+Puntos Obtenidos: 5
+Fecha que termino practica: 4/6/2020
+Hora que termino practica: 14:7
+Tiempo que tardo la practica: 1
+-----------------------------------
+Nombre: rr
+Respuestas:1 2 4 4 3 4 1 4 3 2 
+Puntos Obtenidos: 3
+Fecha que termino practica: 4/6/2020
+Hora que termino practica: 14:7
+Tiempo que tardo la practica: 1
+-----------------------------------

@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profesores-Consulta</title>
+    <script src="consultas.js"></script>
 </head>
 <body>
+    <h1>Bienvenido a la seccion consultas de parciales</h1>
+    <div id="consult_btn">
+        <label>Selecione su consulta</label>
+        <select required name="consulta" id="opciones">
+            <option disabled="disabled" selected>-Seleccione-</option>
+            <option value="1">Estadistica Genera</option>
+            <option value="2">Estadistica por Fecha</option>
+            <option value="3">Lista de Estudiantes con practica Perfecta</option>
+            <option value="4">Lista de los estudiantes con los 10 mejores tiempos</option>
+            <option value="5">Lista de Estudiantes con puntajes inferiores a 7</option>
+            <option value="6">Lista de estudiantes que han fallado una determinada pregunta</option>
+        </select>
+        <button id="aceptar" type="submit">Aceptar</button>
+    </div>
+    <div>
+        <form action="consultas.php" method="post">
+            <div id="pFecha" style="visibility: hidden;">
+                <label >Ingrese fecha: </label> <input id="r1" name="fecha" type="text" placeholder="d/m/aaaa" size="8">
+            </div>
+            <div id="dtPregunta" style="visibility: hidden;">
+                <label >Ingrese numero de pregunta: </label> <input id="r2" name="numero" type="text" placeholder="1" size="8">
+            </div>
+            <br>
+            <button id="butonConsultar" style="visibility: hidden;" type="submit">Consultar</button>
+            <input type="text" name="opcion_selecionada" id="opcion_selecionada" value="" style="visibility: hidden;">
+            <input type="text" name="dato" id="dato" value="" style="visibility: hidden;">
 
-    
+        </form>
+    </div>
+
+
 </body>
 </html>
+
+<!-- <button id="1">Estadistica General</button>
+        <button id="2">Estadistica por Fecha</button>
+        <button id="3">Lista de Estudiantes con practica Perfecta</button>
+        <button id="4">Lista de Estudiantes con puntajes inferiores a 7</button>
+-->
