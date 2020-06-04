@@ -14,77 +14,94 @@ var resultadoFinal;
 var respuestasPrapreguntas="";
 var fechaTemina;
 function siguientePregunta() {
-    console.log("siguiente"+contador);
-    document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
-    contador++;
-    document.getElementById("aceptar").disabled=false;
-    document.getElementById("correcta").innerHTML="";
-    Asignaropciones();
-    uncheck();
-    if(contador==9){
-        document.getElementById("siguiente").style.display='none';
-    }
-    
+        console.log("siguiente"+contador);
+        if (!document.getElementById("aceptar")) {//para el php
+            document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
+            console.log("aaa");
+            console.log(contador);
+            mostrarResultado(contador)
+        }else{//html
+            if (document.getElementById("aceptar").disabled == true) {
+            document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
+            document.getElementById("correcta").innerHTML="";
+            document.getElementById("aceptar").disabled=false;
+            uncheck();
+            Asignaropciones(contador);
+            contador++;
+            }else{
+                alert("Antes debes aceptar la respuesta ")
+            }
+        }
+        if(contador==9){
+            document.getElementById("siguiente").style.display='none';
+            if (document.getElementById("exit")) {//Si existe el id exit en el documento tratadatos php
+                document.getElementById("exit").removeAttribute('style');//Habilitamos el form para mostrar el boton de salir 
+            }
+        } 
     
 }
+    
 sw=0;
 function aceptarRespuesta() {
     //console.log("Inicio funcion"+contador);
-    var respuesta = document.getElementById("formulario");
-    nombreEstudiante=respuesta[0].value;
-    if (sw==0) {
-        document.getElementById("nombre").innerHTML="Nombre: "+respuesta[0].value;//Asignamos el nombre del que realiza la practica
-        respuesta[0].hidden=true//Ocultamos el input de nombre
-        sw=1;
-    }
-    if(contador==0&&respuesta[1].checked){//1
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++;
-    }else if(contador == 1 && respuesta[2].checked){//2
-        document.getElementById("correcta").innerHTML="Correcta ✔"; 
-        puntosObtenidos++;
-    }else if(contador == 2 && respuesta[4].checked){//3
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++; 
-    }else if(contador == 3 && respuesta[4].checked){//4
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++; 
-    }else if(contador == 4 && respuesta[3].checked){//5
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++; 
-    }else if(contador == 5 && respuesta[4].checked){//6
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++; 
-    }else if(contador == 6 && respuesta[1].checked){//7
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++; 
-    }else if(contador == 7 && respuesta[4].checked){//8
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++; 
-    }else if(contador == 8 && respuesta[3].checked){//9
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++; 
-    }else if(contador == 9 && respuesta[2].checked){//10
-        document.getElementById("correcta").innerHTML="Correcta ✔";
-        puntosObtenidos++; 
+    if (verificarSelecion()==true) {
+        var respuesta = document.getElementById("formulario");
+        nombreEstudiante=respuesta[0].value;
+        if (sw==0) {
+            document.getElementById("nombre").innerHTML="Nombre: "+respuesta[0].value;//Asignamos el nombre del que realiza la practica
+            respuesta[0].hidden=true//Ocultamos el input de nombre
+            sw=1;
+        }
+        if(contador==0&&respuesta[1].checked){//1
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++;
+        }else if(contador == 1 && respuesta[2].checked){//2
+            document.getElementById("correcta").innerHTML="Correcta ✔"; 
+            puntosObtenidos++;
+        }else if(contador == 2 && respuesta[4].checked){//3
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++; 
+        }else if(contador == 3 && respuesta[4].checked){//4
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++; 
+        }else if(contador == 4 && respuesta[3].checked){//5
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++; 
+        }else if(contador == 5 && respuesta[4].checked){//6
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++; 
+        }else if(contador == 6 && respuesta[1].checked){//7
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++; 
+        }else if(contador == 7 && respuesta[4].checked){//8
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++; 
+        }else if(contador == 8 && respuesta[3].checked){//9
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++; 
+        }else if(contador == 9 && respuesta[2].checked){//10
+            document.getElementById("correcta").innerHTML="Correcta ✔";
+            puntosObtenidos++; 
+        }else{
+            document.getElementById("correcta").innerHTML="Incorrecta ❌"; 
+        }
+        RespuestaSelecionada();
+        document.getElementById("aceptar").disabled=true;
+        if (contador==9) {//Mostramos los resultados cuando haceptamos la ultima pregunta
+            document.getElementById("aceptar").style.display='none';
+            var hora2 = new Date();
+            finalMinuto=hora2.getMinutes();
+            totalminutos= finalMinuto-inicioMinuto;
+            fechaTemina=hora2.getDay()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
+            horaTemina = hora2.getHours()+":"+hora2.getMinutes();
+            enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,horaTemina,totalminutos);
+            document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
+            document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
+            console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${totalminutos}min`);
+        }
     }else{
-        document.getElementById("correcta").innerHTML="Incorrecta ❌"; 
+    alert("Debe seleccionar una opción antes de aceptar su respuesta")
     }
-    
-RespuestaSelecionada();
-document.getElementById("aceptar").disabled=true;
-if (contador==9) {//Mostramos los resultados cuando haceptamos la ultima pregunta
-    var hora2 = new Date();
-    finalMinuto=hora2.getMinutes();
-    totalminutos= finalMinuto-inicioMinuto;
-    fechaTemina=hora2.getDay()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
-    horaTemina = hora2.getHours()+":"+hora2.getMinutes();
-    enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,horaTemina,totalminutos);
-    document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
-    document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
-    console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${totalminutos}min`);
-}
-        
 }
 
 function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio buttons
@@ -96,7 +113,7 @@ function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio button
             }
     } 
 }
-function enviarValores(nm,resp,pts,fech,horaT,tiemT) {
+function enviarValores(nm,resp,pts,fech,horaT,tiemT) {//nombre,opciones selecionadas, pts obtenidos, fecha que termini, horra que termini , tiempo en que realizo la prueba
     document.getElementById("nombre_php").value = nm;//Nombre
     document.getElementById("respuestas_php").value = resp;//Respuesta
     document.getElementById("puntos_php").value = pts;//Puntos
@@ -112,17 +129,58 @@ function Asignaropciones() {
     indiceOpciones+=4;
 }
 function uncheck(){//Cambiamos el atributo checked a false 
-    var radiobuton = document.getElementById("formulario");
-    radiobuton[1].checked = false;
-    radiobuton[2].checked = false;
-    radiobuton[3].checked = false;
-    radiobuton[4].checked = false;
+    if (document.getElementById("formulario")) {
+        var radiobuton = document.getElementById("formulario");
+        radiobuton[1].checked = false;
+        radiobuton[2].checked = false;
+        radiobuton[3].checked = false;
+        radiobuton[4].checked = false; 
+    }
+    
  }
+ function mostrarResultado(contador) { 
+    var respuesta = document.getElementById("formularioresuelto");
+    if(contador == 0  ){//2
+        respuesta[1].checked = true
+    }else if(contador == 1  ){//3
+        respuesta[3].checked = true
+    }else if(contador == 2  ){//4
+        respuesta[3].checked = true
+    }else if(contador == 3 ){//5
+        respuesta[2].checked = true
+    }else if(contador == 4  ){//6
+        respuesta[3].checked = true
+    }else if(contador == 5 ){//7
+        respuesta[0].checked = true
+    }else if(contador == 6  ){//8
+        respuesta[3].checked = true
+    }else if(contador == 7  ){//9
+        respuesta[2].checked = true
+    }else if(contador == 8  ){//10
+        respuesta[1].checked = true
+    }
+}
+function verificarSelecion() {
+    var formularioRespuestas = document.forms[0].respuesta;//Obtenemos la cantidad de elemtentos del formulario con name "Respuesta"
+    for (let index = 0; index < formularioRespuestas.length; index++) {//Recorremos todos los elementos
+        if (formularioRespuestas[index].checked) {//Verificamos cual tiene el atributo cheked("Selecionado")
+            return true;
+            }
+    } 
+}
 
 window.onload = function () {
     uncheck();
     hora = new Date();
     inicioMinuto=hora.getMinutes();
-    document.getElementById("siguiente").onclick = siguientePregunta;//Para el boton Siguiete pregunta
-    document.getElementById("aceptar").onclick = aceptarRespuesta;//Para el boton Aceptar Respuesta 
+    //Solo funciona con el contenido de index
+    if (document.getElementById("siguiente")&& document.getElementById("aceptar")) {
+        document.getElementById("siguiente").onclick = siguientePregunta;//Para el boton Siguiete pregunta
+        document.getElementById("aceptar").onclick = aceptarRespuesta;//Para el boton Aceptar Respuesta 
+    }
+    //Para el archivo php
+    if (document.getElementById("formularioresuelto")) {
+        document.getElementById("siguiente").onclick =siguientePregunta;
+        
+    }
 }

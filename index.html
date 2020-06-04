@@ -3,38 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practica</title>
-    <script src="codigo.js"></script>
-    
+    <title>Educacion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Parcial 1 Ciencias Naturales</h1>
-   
-   <!-- <form action="preguntas.php" method="post"> -->
-       <form id="formulario"action="preguntas.php" method="GET" >
-           <label id="nombre" for="nombre">Nombre </label><input type="text" name="nombre">
-        <h4 id="pregunta">1- ¿En qué estado se encuentra el agua de los glaciares?</h4>
-        <input type="radio" value="1" name="respuesta" > <label id="r1">1- Solido </label> <br>
-        <input type="radio" value="2" name="respuesta"> <label  id="r2">2- Liquido </label><br>
-        <input type="radio" value="3" name="respuesta"> <label  id="r3">3- Gaseoso </label><br>
-        <input type="radio" value="4" name="respuesta"> <label  id="r4">4- Plasma </label><br>
-        <p id="correcta"></p>
-        <input id="aceptar" type="button" value="Aceptar Respuesta">
-        <!-- <input id="siguiente" type="submit" value="Siguiente pregunta"> -->
-        <input id="siguiente" type="button" value="Siguiente pregunta">
+    <h1>Bienvenido a la clase de Ciencia Naturales</h1>
+    <form method="get" action="profesores.php">
+        <button class="btn btn-outline-primary" type="submit">Profesores</button>
     </form>
-    <form id="resultados" action="tratadatos.php" method="POST" style="visibility: hidden;">
-        <h2 id="pts">Puntos Obtenidos: </h2>
-        <h2 id="tiempo">Puntos Obtenidos: </h2>
-        <input type="text" name="nombre_php" id="nombre_php" value="" style="visibility: hidden;">
-        <input type="text" name="respuestas_php" id="respuestas_php" value="" style="visibility: hidden;">
-        <input type="text" name="puntos_php" id="puntos_php" value="" style="visibility: hidden;">
-        <input type="text" name="fechatemina_php" id="fechatemina_php" value="" style="visibility: hidden;">
-        <input type="text" name="horatemina_php" id="horatemina_php" value="" style="visibility: hidden;">
-        <input type="text" name="tiempotrascurido_php" id="tiempotrascurido_php" value="" style="visibility: hidden;">
-        <br>
-        <input type="submit" value="Guardar">
-        </form>
 
+    <form method="get" action="parcial.html">
+        <button class="btn btn-outline-primary" type="submit">Estudiantes</button>
+    </form>
 </body>
 </html>
