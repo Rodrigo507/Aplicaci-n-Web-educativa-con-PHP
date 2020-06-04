@@ -1,0 +1,28 @@
+Nombre: 
+Respuestas:2
+Puntos Obtenidos: 1
+Fecha que termino practica: 4/6/2020
+Hora que termino practica: 5:3
+Tiempo que tardo la practica: 0
+-----------------------------------
+Nombre: RR
+Respuestas:4314344432
+Puntos Obtenidos: 6
+Fecha que termino practica: 4/6/2020
+Hora que termino practica: 5:24
+Tiempo que tardo la practica: 9
+-----------------------------------
+Nombre: RR
+Respuestas:1244431433
+Puntos Obtenidos: 7
+Fecha que termino practica: 4/6/2020
+Hora que termino practica: 5:27
+Tiempo que tardo la practica: 0
+-----------------------------------
+Nombre: 
+Respuestas:1
+Puntos Obtenidos: 0
+Fecha que termino practica: 4/6/2020
+Hora que termino practica: 5:55
+Tiempo que tardo la practica: 0
+-----------------------------------
