@@ -15,12 +15,12 @@ var respuestasPrapreguntas="";
 var fechaTemina;
 function siguientePregunta() {
     console.log("siguiente"+contador);
-    
     document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
     contador++;
     document.getElementById("aceptar").disabled=false;
     document.getElementById("correcta").innerHTML="";
     Asignaropciones();
+    uncheck();
     if(contador==9){
         document.getElementById("siguiente").style.display='none';
     }
@@ -28,17 +28,20 @@ function siguientePregunta() {
     
 }
 sw=0;
-var varloDeRespuestas;
 function aceptarRespuesta() {
     //console.log("Inicio funcion"+contador);
     var respuesta = document.getElementById("formulario");
     nombreEstudiante=respuesta[0].value;
+    if (sw==0) {
+        document.getElementById("nombre").innerHTML="Nombre: "+respuesta[0].value;//Asignamos el nombre del que realiza la practica
+        respuesta[0].hidden=true//Ocultamos el input de nombre
+        sw=1;
+    }
     if(contador==0&&respuesta[1].checked){//1
-        varloDeRespuestas = respuesta[1].value;
         document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++;
     }else if(contador == 1 && respuesta[2].checked){//2
         document.getElementById("correcta").innerHTML="Correcta ✔"; 
-        varloDeRespuestas = respuesta[2].value;
         puntosObtenidos++;
     }else if(contador == 2 && respuesta[4].checked){//3
         document.getElementById("correcta").innerHTML="Correcta ✔";
@@ -67,7 +70,7 @@ function aceptarRespuesta() {
     }else{
         document.getElementById("correcta").innerHTML="Incorrecta ❌"; 
     }
-
+    
 RespuestaSelecionada();
 document.getElementById("aceptar").disabled=true;
 if (contador==9) {//Mostramos los resultados cuando haceptamos la ultima pregunta
@@ -75,17 +78,11 @@ if (contador==9) {//Mostramos los resultados cuando haceptamos la ultima pregunt
     finalMinuto=hora2.getMinutes();
     totalminutos= finalMinuto-inicioMinuto;
     fechaTemina=hora2.getDay()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
-    enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,totalminutos);
+    horaTemina = hora2.getHours()+":"+hora2.getMinutes();
+    enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,horaTemina,totalminutos);
     document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
     document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
     console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${totalminutos}min`);
-   /* console.log(inicioMinuto, finalMinuto);
-    //----------------------------------------------------------------------
-    //respuestas.forEach(element => respuestasPrapreguntas+=" ");
-    resultadoFinal="Nombre: "+nombreEstudiante+" Puntos obtenidos: "+puntosObtenidos+" Minutos de prueba: "+totalminutos +" Respuestas "+respuestasPrapreguntas;
-    console.log(resultadoFinal);
-    //+" Puntos obtenidos: "+puntosObtenidos+" Minutos de prueba: "+finalMinuto-inicioMinuto;
-    document.getElementById("caja_valor").value = resultadoFinal;*/
 }
         
 }
@@ -99,12 +96,13 @@ function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio button
             }
     } 
 }
-function enviarValores(nm,resp,pts,fech,tiemT) {
+function enviarValores(nm,resp,pts,fech,horaT,tiemT) {
     document.getElementById("nombre_php").value = nm;//Nombre
-    document.getElementById("respuestas_php").value = resp;//Nombre
-    document.getElementById("puntos_php").value = pts;//Nombre
-    document.getElementById("fechatemina_php").value = fech;//Nombre
-    document.getElementById("tiempotrascurido_php").value = tiemT;//Nombre
+    document.getElementById("respuestas_php").value = resp;//Respuesta
+    document.getElementById("puntos_php").value = pts;//Puntos
+    document.getElementById("fechatemina_php").value = fech;//Fecha
+    document.getElementById("horatemina_php").value = horaT;//Horra
+    document.getElementById("tiempotrascurido_php").value = tiemT;//Tiempo que realizo
 }
 function Asignaropciones() {
     document.getElementById("r1").innerHTML=opciones[indiceOpciones];
@@ -113,8 +111,16 @@ function Asignaropciones() {
     document.getElementById("r4").innerHTML=opciones[indiceOpciones+3];
     indiceOpciones+=4;
 }
+function uncheck(){//Cambiamos el atributo checked a false 
+    var radiobuton = document.getElementById("formulario");
+    radiobuton[1].checked = false;
+    radiobuton[2].checked = false;
+    radiobuton[3].checked = false;
+    radiobuton[4].checked = false;
+ }
 
 window.onload = function () {
+    uncheck();
     hora = new Date();
     inicioMinuto=hora.getMinutes();
     document.getElementById("siguiente").onclick = siguientePregunta;//Para el boton Siguiete pregunta
