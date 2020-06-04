@@ -1,7 +1,9 @@
 //var contador=0;
 var contador=0;
 var preguntas = Array("¿Dónde debe tirarse el aceite usado de cocina?","¿Es totalmente pura el agua que bebemos?","¿Qué es el efecto invernadero?","¿Qué es el calentamiento global?","¿Qué es la lluvia ácida?","¿Qué es una marea negra?","¿Qué provoca la contaminación por detergentes?","¿Qué agua es mejor para lavarse?","¿Qué liberan al aire las algas y plantas en la fotosíntesis?");
-var respuestas= Array();//Guardaremos el valor de las respuestas selecionadas
+var opciones = Array("Por el fregadero","En un contenedor específico para ello","En la basura","Por el váter","Si, porque es inodora","Si, porque es incolora"," Si, porque sino no la beberíamos","No, porque presenta sales minerales y micro-partículas","El cultivo de hortalizas","Encender la calefacción en invierno","Regar el jardín con una manguera","La acumulación de calor","La fiebre","El verano","El aumento de la temperatura media del planeta","El calor que dan los radiadores en invierno","Lluvia de vinagre","Lluvia caliente","Lluvia de agua salada","Lluvia con un pH ácido","Un vertido de petróleo en el mar","Una marea por la noche","Una carrera de barcos","Una playa de Tenerife","Que los ríos queden muy limpios","Que los peces se laven allí","Qué las aves aniden allí"," Que las aves mueran por ahogamiento o por frío, al disolver los detergentes la capa de grasa que cubre sus plumas","El agua salada","El agua con mucha cal","El agua dulce","El agua con gas","Azúcar","Oxígeno","Sal","Dióxido de carbono");
+var indiceOpciones=0;
+var respuestas = Array();//Guardaremos el valor de las respuestas selecionadas
 var nombreEstudiante;
 var puntosObtenidos=0;
 var hora;
@@ -16,6 +18,7 @@ function siguientePregunta() {
     contador++;
     document.getElementById("aceptar").disabled=false;
     document.getElementById("correcta").innerHTML="";
+    Asignaropciones();
     if(contador==9){
         document.getElementById("siguiente").style.display='none';
     }
@@ -111,13 +114,17 @@ function enviarValores(nm,resp,pts,fech,tiemT) {
     document.getElementById("fechatemina_php").value = fech;//Nombre
     document.getElementById("tiempotrascurido_php").value = tiemT;//Nombre
 }
-
+function Asignaropciones() {
+    document.getElementById("r1").innerHTML=opciones[indiceOpciones];
+    document.getElementById("r2").innerHTML=opciones[indiceOpciones+1];
+    document.getElementById("r3").innerHTML=opciones[indiceOpciones+2];
+    document.getElementById("r4").innerHTML=opciones[indiceOpciones+3];
+    indiceOpciones+=4;
+}
 
 window.onload = function () {
     hora = new Date();
     inicioMinuto=hora.getMinutes();
     document.getElementById("siguiente").onclick = siguientePregunta;//Para el boton Siguiete pregunta
-    document.getElementById("aceptar").onclick = aceptarRespuesta;//Para el boton Aceptar Respuesta
-   
-    
+    document.getElementById("aceptar").onclick = aceptarRespuesta;//Para el boton Aceptar Respuesta 
 }
