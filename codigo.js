@@ -14,6 +14,8 @@ var resultadoFinal;
 var respuestasPrapreguntas="";
 var fechaTemina;
 function siguientePregunta() {
+    console.log("siguiente"+contador);
+    
     document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
     contador++;
     document.getElementById("aceptar").disabled=false;
@@ -31,71 +33,61 @@ function aceptarRespuesta() {
     //console.log("Inicio funcion"+contador);
     var respuesta = document.getElementById("formulario");
     nombreEstudiante=respuesta[0].value;
-    if (sw==0) {//Controlar que sea la primiera pregunta
-            document.getElementById("nombre").innerHTML="Nombre: "+respuesta[0].value;//Asignamos el nombre del que realiza la practica
-            respuesta[0].hidden=true//Ocultamos el input de nombre
-        if(contador==0&&respuesta[1].checked){//1
-            varloDeRespuestas = respuesta[1].value;
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++;
-            sw=1;  
-        }else{
-            sw=1; 
-            document.getElementById("correcta").innerHTML="Incorrecta ❌";
-        }
-    }else{//PARA EL FORMULARIO DESDE PHP
-        //console.log("SW= "+sw);
-        if(contador == 1 && respuesta[2].checked){//2
-            document.getElementById("correcta").innerHTML="Correcta ✔"; 
-            varloDeRespuestas = respuesta[2].value;
-            puntosObtenidos++;
-        }else if(contador == 2 && respuesta[4].checked){//3
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++; 
-        }else if(contador == 3 && respuesta[2].checked){//4
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++; 
-        }else if(contador == 4 && respuesta[3].checked){//5
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++; 
-        }else if(contador == 5 && respuesta[4].checked){//6
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++; 
-        }else if(contador == 6 && respuesta[1].checked){//7
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++; 
-        }else if(contador == 7 && respuesta[4].checked){//8
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++; 
-        }else if(contador == 8 && respuesta[3].checked){//9
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++; 
-        }else if(contador == 9 && respuesta[2].checked){//10
-            document.getElementById("correcta").innerHTML="Correcta ✔";
-            puntosObtenidos++; 
-        }else{
-            document.getElementById("correcta").innerHTML="Incorrecta ❌"; 
-        }
+    if(contador==0&&respuesta[1].checked){//1
+        varloDeRespuestas = respuesta[1].value;
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+    }else if(contador == 1 && respuesta[2].checked){//2
+        document.getElementById("correcta").innerHTML="Correcta ✔"; 
+        varloDeRespuestas = respuesta[2].value;
+        puntosObtenidos++;
+    }else if(contador == 2 && respuesta[4].checked){//3
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++; 
+    }else if(contador == 3 && respuesta[4].checked){//4
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++; 
+    }else if(contador == 4 && respuesta[3].checked){//5
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++; 
+    }else if(contador == 5 && respuesta[4].checked){//6
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++; 
+    }else if(contador == 6 && respuesta[1].checked){//7
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++; 
+    }else if(contador == 7 && respuesta[4].checked){//8
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++; 
+    }else if(contador == 8 && respuesta[3].checked){//9
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++; 
+    }else if(contador == 9 && respuesta[2].checked){//10
+        document.getElementById("correcta").innerHTML="Correcta ✔";
+        puntosObtenidos++; 
+    }else{
+        document.getElementById("correcta").innerHTML="Incorrecta ❌"; 
     }
-    RespuestaSelecionada();
-    document.getElementById("aceptar").disabled=true;
-    if (contador==9) {//Mostramos los resultados cuando haceptamos la ultima pregunta
-        var hora2 = new Date();
-        finalMinuto=hora2.getMinutes();
-        totalminutos= finalMinuto-inicioMinuto;
-        fechaTemina=hora2.getDay()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
-        enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,totalminutos);
-        document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
-        document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
-        console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${totalminutos}min`);
-       /* console.log(inicioMinuto, finalMinuto);
-        //----------------------------------------------------------------------
-        //respuestas.forEach(element => respuestasPrapreguntas+=" ");
-        resultadoFinal="Nombre: "+nombreEstudiante+" Puntos obtenidos: "+puntosObtenidos+" Minutos de prueba: "+totalminutos +" Respuestas "+respuestasPrapreguntas;
-        console.log(resultadoFinal);
-        //+" Puntos obtenidos: "+puntosObtenidos+" Minutos de prueba: "+finalMinuto-inicioMinuto;
-        document.getElementById("caja_valor").value = resultadoFinal;*/
-    }
+
+RespuestaSelecionada();
+document.getElementById("aceptar").disabled=true;
+if (contador==9) {//Mostramos los resultados cuando haceptamos la ultima pregunta
+    var hora2 = new Date();
+    finalMinuto=hora2.getMinutes();
+    totalminutos= finalMinuto-inicioMinuto;
+    fechaTemina=hora2.getDay()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
+    enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,totalminutos);
+    document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
+    document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
+    console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${totalminutos}min`);
+   /* console.log(inicioMinuto, finalMinuto);
+    //----------------------------------------------------------------------
+    //respuestas.forEach(element => respuestasPrapreguntas+=" ");
+    resultadoFinal="Nombre: "+nombreEstudiante+" Puntos obtenidos: "+puntosObtenidos+" Minutos de prueba: "+totalminutos +" Respuestas "+respuestasPrapreguntas;
+    console.log(resultadoFinal);
+    //+" Puntos obtenidos: "+puntosObtenidos+" Minutos de prueba: "+finalMinuto-inicioMinuto;
+    document.getElementById("caja_valor").value = resultadoFinal;*/
+}
+        
 }
 
 function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio buttons
