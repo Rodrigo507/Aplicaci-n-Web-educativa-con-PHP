@@ -3,165 +3,18 @@ Respuestas:1 4 4 4 4 4 4 4 3 2
 Puntos Obtenidos: 8
 Fecha que termino practica: 10/12/2020
 Hora que termino practica: 8:50
-Tiempo que tardo la practica: 0
+Tiempo que tardo la practica: 5
 
 Nombre: Ibeth
 Respuestas:1 3 1 4 3 2 4 2 4 2 
 Puntos Obtenidos: 4
 Fecha que termino practica: 4/6/2020
 Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
+Tiempo que tardo la practica: 8
 
 Nombre: Ibeth1
 Respuestas:1 3 1 4 3 2 4 2 4 2 
 Puntos Obtenidos: 4
 Fecha que termino practica: 4/6/2020
 Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth2
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 8/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth3
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2015
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth4
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2018
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Rodrigo
-Respuestas:1 4 4 4 4 4 4 4 3 2 
-Puntos Obtenidos: 7
-Fecha que termino practica: 10/12/2020
-Hora que termino practica: 8:50
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth1
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth2
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 8/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth3
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2015
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth4
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 10
-Fecha que termino practica: 4/6/2018
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Rodrigo
-Respuestas:1 4 4 4 4 4 4 4 3 2 
-Puntos Obtenidos: 7
-Fecha que termino practica: 10/12/2020
-Hora que termino practica: 8:50
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth1
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 8
-Fecha que termino practica: 4/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth2
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 8/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth3
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2015
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth4
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 10
-Fecha que termino practica: 4/6/2018
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Rodrigo
-Respuestas:1 4 4 4 4 4 4 4 3 2 
-Puntos Obtenidos: 7
-Fecha que termino practica: 10/12/2020
-Hora que termino practica: 8:50
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth1
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth2
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 8/6/2020
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth3
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 4
-Fecha que termino practica: 4/6/2015
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
-
-Nombre: Ibeth4
-Respuestas:1 3 1 4 3 2 4 2 4 2 
-Puntos Obtenidos: 1
-Fecha que termino practica: 4/6/2018
-Hora que termino practica: 8:51
-Tiempo que tardo la practica: 0
+Tiempo que tardo la practica: 2

@@ -3,7 +3,7 @@ $valorSelecion = $_POST['opcion_selecionada'];
 $dato = $_POST['dato'];
 $datos=array();//Agregaremos a cada encuentado en un indice
 $datos=dividirUsuarios();
-
+$ordenado=array();
 
 if ($valorSelecion==1) {//Estadística general
     estaGeneral($datos);
@@ -12,8 +12,8 @@ if ($valorSelecion==1) {//Estadística general
 }else if ($valorSelecion==3) {//Lista de Estudiantes con práctica perfecta
     estaPerfecta($datos);
 }else if ($valorSelecion==4) {//Lista de los estudiantes con los 10 mejores tiempos
-    echo "Function 10 mejores tiempo <br>";
-    //estMejores($datos);
+    $ordenado=burbuja($datos,sizeof($datos));
+    estMejores($ordenado);
     //echo $datos[0];
 }else if ($valorSelecion==5) {//Lista de estudiantes con puntajes inferiores a 7.
     estInferior($datos);
@@ -86,8 +86,39 @@ function dividirUsuarios(){
 }
 
 function estMejores($array){
-    for ($i=0; $i < count($array); $i++) { 
+    echo "Lista de los estudiantes con los 10 mejores tiempos<br>";
+    if (count($array)>10) {
+        $tam = 9;
+    }else{
+        $tam = count($array);
+    }
+    for ($i=0; $i < $tam; $i++) { 
+        echo "Prueba #".($i+1);
         echo $array[$i];
+        echo "---------------------------------------<br>";
     }
 }
+function burbuja($A,$n){
+    for($i=1;$i<$n;$i++)    {
+            for($j=0;$j<$n-$i;$j++){
+                $pos1 = strpos($A[$j],"Tiempo");
+                $pos2 = strpos($A[$j+1],"Tiempo");
+                $x1 = substr($A[$j],$pos1+30);
+                $x2 = substr($A[$j+1],$pos2+30);
+                if ($x1==10) {
+                    $x1=8;
+                }
+                if ($x2==10) {
+                    $x2=8;
+                }
+                if(strcmp($x1, $x2)==1){
+                    $k=$A[$j+1];
+                    $A[$j+1]=$A[$j]; 
+                    $A[$j]=$k;
+                }
+            }
+    }
+  return $A;
+}
+
 ?>
