@@ -4,6 +4,7 @@ $dato = $_POST['dato'];
 $datos=array();//Agregaremos a cada encuentado en un indice
 $datos=dividirUsuarios();
 $ordenado=array();
+$ordenado=burbuja($datos,sizeof($datos));
 
 if ($valorSelecion==1) {//Estadística general
     estaGeneral($datos);
@@ -12,7 +13,6 @@ if ($valorSelecion==1) {//Estadística general
 }else if ($valorSelecion==3) {//Lista de Estudiantes con práctica perfecta
     estaPerfecta($datos);
 }else if ($valorSelecion==4) {//Lista de los estudiantes con los 10 mejores tiempos
-    $ordenado=burbuja($datos,sizeof($datos));
     estMejores($ordenado);
     //echo $datos[0];
 }else if ($valorSelecion==5) {//Lista de estudiantes con puntajes inferiores a 7.
@@ -20,6 +20,12 @@ if ($valorSelecion==1) {//Estadística general
 }else if($valorSelecion==6) {//Lista de estudiantes que han fallado una determinada pregunta.
 
 }
+echo("<br>Cantidad de prácticas completadas: ".sizeof($datos)."<br>");
+echo("<br>Tiempo máximo en resolver: ".tiemMaximo($ordenado));
+echo("<br>Tiempo mínimo en resolver: ".tiemMinimo($ordenado));
+echo("<br><br>");
+echo("<br>Cantidad de estudiantes por puntajes correctos<br> ");
+puntosObteCantidad($datos);
 
 echo("<form id='exit' method='get' action='consultas.html' '>
         <button type='submit'>Salir</button>
@@ -119,6 +125,34 @@ function burbuja($A,$n){
             }
     }
   return $A;
+}
+function tiemMaximo($arrayOrdenado){
+    $posicionTiempo = strpos($arrayOrdenado[sizeof($arrayOrdenado)-1],"Tiempo");
+    $valorTiempo = substr($arrayOrdenado[sizeof($arrayOrdenado)-1],$posicionTiempo+30);
+    return $valorTiempo;
+}
+function tiemMinimo($arrayOrdenado){
+    $posicionTiempo = strpos($arrayOrdenado[0],"Tiempo");
+    $valorTiempo = substr($arrayOrdenado[0],$posicionTiempo+30);
+    return $valorTiempo;
+}
+function puntosObteCantidad($array){
+    $cantidad=0;
+    $cont =10;
+    echo "Lista de estudiantes con puntajes inferiores a 7.<br>";
+    echo("<br>Puntos Obetenidos&nbsp;&nbsp;&nbsp;&nbspCant. de estudiantes<br>");
+    for ($z=0; $z <11 ; $z++) { 
+        for ($i=0; $i < count($array); $i++) { 
+            $pos1 = strpos($array[$i],"Obtenidos");
+            if (substr($array[$i],$pos1+10,3)==$cont) {
+                $cantidad++;
+            }
+        }
+        echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cont."&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;".$cantidad);
+        echo("<br>");
+        $cont--;
+        $cantidad=0;
+    }
 }
 
 ?>

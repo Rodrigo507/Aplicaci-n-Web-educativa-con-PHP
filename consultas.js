@@ -13,17 +13,14 @@ function mostrarFormulario() {
 }
 function enviarValores(o) {//nombre,opciones selecionadas, pts obtenidos, fecha que termini, horra que termini , tiempo en que realizo la prueba
     var op = document.getElementById("opciones");
-    var select = op.options[op.selectedIndex].value;
+    var select = op.options[op.selectedIndex].value;    
         if (select==2) {
-            alert ("fecha");
             document.getElementById("dato").value = document.getElementById("r1").value;//Nombre
         }else if (select == 6) {
             document.getElementById("dato").value = document.getElementById("r2").value;//Nombre
-            alert("Numero")
-        }else{
-            document.getElementById("opcion_selecionada").value = select;//Nombre
-
         }
+    document.getElementById("opcion_selecionada").value = select;//Nombre
+        
 }
 
 
