@@ -49,7 +49,7 @@
         fwrite($open,"Fecha que termino practica: ". $fechaTermino."\n");
         fwrite($open,"Hora que termino practica: ". $horaTermino."\n");
         fwrite($open,"Tiempo que tardo la practica: ". $tiempoPrueba."\n");
-        fwrite($open,"-----------------------------------\n");
+        fwrite($open,"\n");
     fclose($open);//Cerramos el archivo txt
     
     ?>
