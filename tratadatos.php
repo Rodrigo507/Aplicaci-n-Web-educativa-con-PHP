@@ -41,8 +41,8 @@
     ?>
 
     <?php
-    $nombre_contizacion = "resultado.txt";//Nombre base del arhcivo a crear
-    $open = fopen($nombre_contizacion,"a");//Abrimos el archivo en modo escritura
+    $nombre_archivo = "resultado.txt";//Nombre base del arhcivo a crear
+    $open = fopen($nombre_archivo,"a");//Abrimos el archivo en modo escritura
         fwrite($open,"Nombre: ".$nombre."\n");
         fwrite($open,"Respuestas:".$respuestas."\n");
         fwrite($open,"Puntos Obtenidos: ". $puntos."\n");
