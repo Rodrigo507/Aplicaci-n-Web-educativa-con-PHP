@@ -35,6 +35,7 @@ if (sizeof($datos)!=0) {
     echo("<br><br>");
     echo("<br>Cantidad de estudiantes por puntajes correctos<br> ");
     puntosObteCantidad($datos);//Muestra tabla con la cantidad de estudiantes por cada puntaje que se obtubo
+    echo("<br>Estadística de aciertos y fallas:<br><br>");
     aciertFallas($datos);//Muestra una tabla que contiene # de pregunta cant aciertos y cant Fallas por pregunta
 
     echo("<br><br><form id='exit' method='get' action='consultas.html' '>
@@ -49,7 +50,7 @@ if (sizeof($datos)!=0) {
 
 }
 function estaGeneral($array){//Estadística general 
-    echo "<h1>Estadística General</h1>";
+    echo "<h3>Estadística General</h3>";
     for ($i=0; $i < count($array); $i++) {
         echo("Prueba #".($i+1)."<br>"); 
         echo $array[$i];
@@ -71,28 +72,35 @@ function estaFecha($fechauser,$array){//Estadística por fecha
 }
 
 function estaPerfecta($array){// Lista de Estudiantes con práctica perfecta
-    echo "Lista de Estudiantes con práctica perfecta<br>";
+    echo "<h3>Lista de Estudiantes con práctica perfecta</h3>";
     for ($i=0; $i < count($array); $i++) { 
         if (strpos($array[$i],"Puntos Obtenidos: 10")!==false) {//Para los que obtubieron 10 pts
             echo $array[$i]."<br>";
+            if (count($array)>=1) {
+                echo "---------------------------------------<br>";
+            }
         }
     }
 }
 
-
 function estInferior($array){//Lista de estudiantes con puntajes inferiores a 7.
     $cont =1;
-    echo "Lista de estudiantes con puntajes inferiores a 7.<br>";
+    echo "<h3>Lista de estudiantes con puntajes inferiores a 7.</h3>";
     for ($i=0; $i < count($array); $i++) { 
         $pos1 = strpos($array[$i],"Obtenidos");//Pocicion de obtenidos 
         if (substr($array[$i],$pos1+10,3)<7) {//si la subcadena(puntos) es menor a 7 
             echo("Prueba # ".$cont);
             echo $array[$i]."<br>";
+            echo "---------------------------------------<br>";
+            
             $cont++;
         }
     }
 }
+
 function estFallaron($array,$numPregunta){//Funcion que muestra solo estudiantes que fallaron n pregunta
+    echo("<h3>Lista de estudiantes que han fallado una determinada pregunta # ".$numPregunta."</h3>");
+
     $arrayRespuestasCorrecta = array(0=>"1", 1=>"2", 2=>"4", 3=>"4", 4=>"3", 5=>"4", 6=>"1", 7=>"4", 8=>"3", 9=>"2");//Clave de respuestas correcta
     for ($x=0; $x <sizeof($array) ; $x++) { 
         $respuesta_usur = valoresRespuesta($array,$x);//Array con respuestas para cada parcial
@@ -124,7 +132,7 @@ function dividirUsuarios(){//Tratamos el archivo txt y agregamos cada usuario a 
 
 function estMejores($array){//Lista de los estudiantes con los 10 mejores tiempos
         //Le pasamos un array ordenado de forma acendente 
-    echo "Lista de los estudiantes con los 10 mejores tiempos<br>";
+    echo "<h3>Lista de los estudiantes con los 10 mejores tiempos</h3>";
     if (count($array)>11) {//Para controlar que se muestre solo 10 por si hay mas pruebas
         $tam = 10;
     }else{
@@ -136,6 +144,7 @@ function estMejores($array){//Lista de los estudiantes con los 10 mejores tiempo
         echo "---------------------------------------<br>";
     }
 }
+
 function burbuja($A,$n){//Para ordenar el arreglo
     for($i=1;$i<$n;$i++)    {
             for($j=0;$j<$n-$i;$j++){
@@ -161,11 +170,13 @@ function burbuja($A,$n){//Para ordenar el arreglo
     }
   return $A;
 }
+
 function tiemMaximo($arrayOrdenado){//Obtenemos el valor del maximo 
     $posicionTiempo = strpos($arrayOrdenado[sizeof($arrayOrdenado)-1],"Tiempo");
     $valorTiempo = substr($arrayOrdenado[sizeof($arrayOrdenado)-1],$posicionTiempo+30);
     return $valorTiempo;
 }
+
 function tiemMinimo($arrayOrdenado){//Obtenemos el valos minimo
     $posicionTiempo = strpos($arrayOrdenado[0],"Tiempo");
     $valorTiempo = substr($arrayOrdenado[0],$posicionTiempo+30);
@@ -188,6 +199,7 @@ function puntosObteCantidad($array){
         $cantidad=0;
     }
 }
+
 function valoresRespuesta($array,$numParcial){//Retorna un array con los valores que el usuario respondio a cada pregunta
     $respuesta_usur = array();//Valores de las respuestas de 1 prueba
     $pos1 = strpos($array[$numParcial],"Respuestas:");//Posicion al encontrar la palabra en el string
@@ -199,6 +211,7 @@ function valoresRespuesta($array,$numParcial){//Retorna un array con los valores
     }
     return $respuesta_usur;//Retornamos el array con respuesta solo de 1 practica resuelta
 }
+
 function aciertFallas($array){
     $arrayRespuestasCorrecta = array(0=>"1", 1=>"2", 2=>"4", 3=>"4", 4=>"3", 5=>"4", 6=>"1", 7=>"4", 8=>"3", 9=>"2");//Clave de respuestas correcta
     $cantAciertas = array(0=>0, 1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0);//Guardamos las aciertas por pregunta
@@ -219,6 +232,7 @@ function aciertFallas($array){
         echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".($i+1)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cantAciertas[$i]."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cantFallas[$i]."<br>");
     }
 }
+
 ?>
 
 

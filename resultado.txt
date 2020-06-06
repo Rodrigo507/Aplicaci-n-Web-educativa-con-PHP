@@ -1,20 +1,35 @@
-Nombre: Fallela1
-Respuestas:2 1 4 4 3 4 4 4 3 2 
-Puntos Obtenidos: 7
-Fecha que termino practica: 5/6/2020
-Hora que termino practica: 10:3
+Nombre: fals1
+Respuestas:2 2 4 4 3 4 1 4 3 2 
+Puntos Obtenidos: 9
+Fecha que termino practica: 6/6/2020
+Hora que termino practica: 1:48
 Tiempo que tardo la practica: 0 min
 
-Nombre: Fallela1
-Respuestas:2 1 4 4 3 4 4 4 3 2 
-Puntos Obtenidos: 7
-Fecha que termino practica: 5/6/2020
-Hora que termino practica: 10:3
-Tiempo que tardo la practica: 0 min
+Nombre: Falsa 3 5
+Respuestas:1 2 3 4 1 4 1 4 3 2 
+Puntos Obtenidos: 8
+Fecha que termino practica: 6/6/2020
+Hora que termino practica: 1:52
+Tiempo que tardo la practica: 1 min
 
-Nombre: Fallela1
-Respuestas:2 1 4 4 3 4 4 4 3 2 
-Puntos Obtenidos: 7
-Fecha que termino practica: 5/6/2020
-Hora que termino practica: 10:3
-Tiempo que tardo la practica: 0 min
+Nombre: Falsa 3 5
+Respuestas:1 2 3 4 1 4 1 4 3 2 
+Puntos Obtenidos: 8
+Fecha que termino practica: 6/6/2020
+Hora que termino practica: 1:52
+Tiempo que tardo la practica: 1 min
+
+Nombre: Falsa solo3
+Respuestas:1 2 3 4 3 4 1 4 3 2 
+Puntos Obtenidos: 9
+Fecha que termino practica: 6/6/2020
+Hora que termino practica: 1:56
+Tiempo que tardo la practica: 2 min
+
+Nombre: q
+Respuestas:1 2 4 4 3 4 1 4 3 2 
+Puntos Obtenidos: 10
+Fecha que termino practica: 6/6/2020
+Hora que termino practica: 4:7
+Tiempo que tardo la practica: 2 min
+
