@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profesores-Consulta</title>
     <script src="consultas.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
     <h1>Bienvenido a la seccion consultas de parciales</h1>
     <div id="consult_btn">
-        <label>Selecione su consulta</label>
+        <label>Selecione su consulta&nbsp;</label>
         <select required name="consulta" id="opciones">
             <option disabled="disabled" selected>-Seleccione-</option>
             <option value="1">Estadistica Genera</option>
@@ -20,7 +22,7 @@
             <option value="6">Lista de estudiantes que han fallado una determinada pregunta</option>
         </select>
     </div>
-    <div>
+    <div id="campos">
         <form action="consultas.php" method="post">
             <div id="pFecha" style="visibility: hidden;">
                 <label >Ingrese fecha: </label> <input id="r1" name="fecha" type="text" placeholder="d/m/aaaa">
@@ -28,14 +30,16 @@
             <div id="dtPregunta" style="visibility: hidden;">
                 <label >Ingrese numero de pregunta: </label> <input id="r2" name="numero" type="text" placeholder="1" size="8">
             </div>
-            <button id="butonConsultar" style="visibility: hidden;" type="submit">Consultar</button>
-            
+            <button id="butonConsultar" style="visibility: hidden;" type="submit" class="btn btn-success">Consultar</button>
             <input type="text" name="opcion_selecionada" id="opcion_selecionada" value="" style="visibility: hidden;">
             <input type="text" name="dato" id="dato" value="" style="visibility: hidden;">
 
         </form>
     </div>
-
+    <form id='exit' method='get' action='index.html'>
+        <button type='submit' class="btn btn-danger">Salir</button>
+    
+    </form>
 
 </body>
 </html>

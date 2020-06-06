@@ -1,0 +1,15 @@
+#contenedor,#consult_btn, #campos,h1{
+    display: flex;
+    justify-content: center;
+}
+#caja1{
+    padding: 5%;
+}
+#caja2{
+    padding: 5%;
+}
+#exit{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 31.2%;
+}

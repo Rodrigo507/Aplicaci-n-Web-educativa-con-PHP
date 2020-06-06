@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Educacion</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <h1>Bienvenido a la clase de Ciencia Naturales</h1>
-    <form method="get" action="consultas.html">
-        <button class="btn btn-outline-primary" type="submit">Profesores</button>
-    </form>
+    <div id="contenedor">
+        <div id="caja1">
+            <form method="get" action="consultas.html">
+                <button class="btn btn-outline-primary" type="submit">Profesores</button>
+            </form>
+        </div>
+    
+        <div id="caja2">
+            <form id="form" method="get" action="parcial.html">
+                <button class="btn btn-outline-primary" type="submit">Estudiantes</button>
+            </form>
 
-    <form method="get" action="parcial.html">
-        <button class="btn btn-outline-primary" type="submit">Estudiantes</button>
-    </form>
+        </div>
+    </div>
 </body>
 </html>

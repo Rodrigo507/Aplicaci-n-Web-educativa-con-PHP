@@ -5,13 +5,17 @@ function mostrarFormulario() {
         document.getElementById("pFecha").removeAttribute("style");//Mostramos el capo para ingresar la fecha
         document.getElementById("dtPregunta").setAttribute("style",style="visibility: hidden;");//Mostramos el capo para ingresar la fecha
         document.getElementById("butonConsultar").onmouseover = validarFecha;//Para validar fecha
-        document.getElementById("r1").setAttribute("required","required")
-        
+        document.getElementById("r1").setAttribute("required","required");
+        document.getElementById("r2").removeAttribute("required");
     }else if (this.value ==6) {
+        document.getElementById("r2").setAttribute("required","required");
+        document.getElementById("r1").removeAttribute("required");
         document.getElementById("dtPregunta").removeAttribute("style");//Ocultamos 
         document.getElementById("pFecha").setAttribute("style",style="visibility: hidden;");//Mostramos el capo para ingresar la fecha
         document.getElementById("butonConsultar").onmouseover = validarNumeroPregunta;//Para validar fecha
     }else{
+        document.getElementById("r1").removeAttribute("required");
+        document.getElementById("r2").removeAttribute("required");
         document.getElementById("dtPregunta").setAttribute("style",style="visibility: hidden;");//Mostramos el capo para ingresar la fecha
         document.getElementById("pFecha").setAttribute("style",style="visibility: hidden;");//Mostramos el capo para ingresar la fecha
     }

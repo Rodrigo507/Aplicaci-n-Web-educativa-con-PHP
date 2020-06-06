@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica</title>
     <script src="codigo.js"></script>
-    
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 </head>
 <body>
     <h1>Parcial 1 Ciencias Naturales</h1>
-   
-   <!-- <form action="preguntas.php" method="post"> -->
        <form id="formulario">
         <label id="nombre" for="nombre">Nombre </label><input type="text" name="nombre">
         <h4 id="pregunta">1- ¿En qué estado se encuentra el agua de los glaciares?</h4>
@@ -19,9 +19,9 @@
         <input type="radio" value="3" name="respuesta"> <label  id="r3">3- Gaseoso </label><br>
         <input type="radio" value="4" name="respuesta"> <label  id="r4">4- Plasma </label><br>
         <p id="correcta"></p>
-        <input id="aceptar" type="button" value="Aceptar Respuesta">
+        <input id="aceptar" type="button" value="Aceptar Respuesta" class="btn btn-success">
         <!-- <input id="siguiente" type="submit" value="Siguiente pregunta"> -->
-        <input id="siguiente" type="button" value="Siguiente pregunta">
+        <input id="siguiente" type="button" value="Siguiente pregunta" class="btn btn-primary">
     </form>
     <form id="resultados" action="tratadatos.php" method="POST" style="visibility: hidden;">
         <input type="submit" value="Ver practica desarollada">
@@ -35,6 +35,5 @@
         <input type="text" name="tiempotrascurido_php" id="tiempotrascurido_php" value="" style="visibility: hidden;">
         <br>
         </form>
-
 </body>
 </html>
