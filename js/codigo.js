@@ -1,4 +1,3 @@
-//var contador=0;
 var contador=0;
 var preguntas = Array("¿Dónde debe tirarse el aceite usado de cocina?","¿Es totalmente pura el agua que bebemos?","¿Qué es el efecto invernadero?","¿Qué es el calentamiento global?","¿Qué es la lluvia ácida?","¿Qué es una marea negra?","¿Qué provoca la contaminación por detergentes?","¿Qué agua es mejor para lavarse?","¿Qué liberan al aire las algas y plantas en la fotosíntesis?");
 var opciones = Array("Por el fregadero","En un contenedor específico para ello","En la basura","Por el váter","Si, porque es inodora","Si, porque es incolora"," Si, porque sino no la beberíamos","No, porque presenta sales minerales y micro-partículas","El cultivo de hortalizas","Encender la calefacción en invierno","Regar el jardín con una manguera","La acumulación de calor","La fiebre","El verano","El aumento de la temperatura media del planeta","El calor que dan los radiadores en invierno","Lluvia de vinagre","Lluvia caliente","Lluvia de agua salada","Lluvia con un pH ácido","Un vertido de petróleo en el mar","Una marea por la noche","Una carrera de barcos","Una playa de Tenerife","Que los ríos queden muy limpios","Que los peces se laven allí","Qué las aves aniden allí"," Que las aves mueran por ahogamiento o por frío, al disolver los detergentes la capa de grasa que cubre sus plumas","El agua salada","El agua con mucha cal","El agua dulce","El agua con gas","Azúcar","Oxígeno","Sal","Dióxido de carbono");
@@ -45,7 +44,6 @@ function siguientePregunta() {
 }
 sw=0;
 function aceptarRespuesta() {
-    //console.log("Inicio funcion"+contador);
     if (verificarSelecion()==true) {
         var respuesta = document.getElementById("formulario");
         nombreEstudiante=respuesta[0].value;

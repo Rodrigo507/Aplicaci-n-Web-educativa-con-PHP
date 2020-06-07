@@ -8,12 +8,12 @@
 <body>
 <?php
 $valorSelecion = $_POST['opcion_selecionada'];
-$dato = $_POST['dato'];
+$dato = $_POST['dato'];//Es el valor que enviar el que solicita la consulta(Numero de prueba - Fecha)
 $datos=array();//Agregaremos a cada encuentado en un indice
 $datos=dividirUsuarios();
 $ordenado=array();
 $ordenado=burbuja($datos,sizeof($datos));
-if (sizeof($datos)!=0) {
+if (sizeof($datos)!=0) {//Solo entra si hay datos en el array de datos
     if ($valorSelecion==1) {//Estadística general
         estaGeneral($datos);
     }else if ($valorSelecion==2) {//Estadística por fecha
@@ -146,6 +146,8 @@ function estMejores($array){//Lista de los estudiantes con los 10 mejores tiempo
 }
 
 function burbuja($A,$n){//Para ordenar el arreglo
+    //A= array de datos
+    //n= Numero de elemento del array
     for($i=1;$i<$n;$i++)    {
             for($j=0;$j<$n-$i;$j++){
                 //-------------------
@@ -168,7 +170,7 @@ function burbuja($A,$n){//Para ordenar el arreglo
                 }
             }
     }
-  return $A;
+  return $A;//Retornamos un array ordenado
 }
 
 function tiemMaximo($arrayOrdenado){//Obtenemos el valor del maximo 
