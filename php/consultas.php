@@ -38,13 +38,13 @@ if (sizeof($datos)!=0) {
     echo("<br>Estadística de aciertos y fallas:<br><br>");
     aciertFallas($datos);//Muestra una tabla que contiene # de pregunta cant aciertos y cant Fallas por pregunta
 
-    echo("<br><br><form id='exit' method='get' action='consultas.html' '>
+    echo("<br><br><form id='exit' method='get' action='../html/consultas.html' '>
         <button type='submit'>Salir</button>
         </form>");
     //echo("<button onclick=".generarInforme()."> Llamar </buton>");
 }else{
     echo("<h1> NO HAY DATOS PARA PROCESAR</h1><br><br>");
-    echo("<form id='exit' method='get' action='consultas.html' '>
+    echo("<form id='exit' method='get' action='../html/consultas.html' '>
             <button type='submit'>Salir</button>
             </form>");
 
@@ -114,7 +114,7 @@ function estFallaron($array,$numPregunta){//Funcion que muestra solo estudiantes
 
 function dividirUsuarios(){//Tratamos el archivo txt y agregamos cada usuario a un indice en el array
     $array=array();
-    $Nombre_Archivo = "resultado.txt";
+    $Nombre_Archivo = "../textoPlano/resultado.txt";
     $cadena="";
     $El_archivo=fopen($Nombre_Archivo,"r") or die("No se puede abrir el archivo");
     while(!feof($El_archivo)){

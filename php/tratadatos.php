@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRACTICA RESUELTA</title>
-    <script src="codigo.js"></script>
+    <script src="../js/codigo.js"></script>
 </head>
 <body>
     <?php
@@ -14,12 +14,6 @@
         $fechaTermino = $_POST['fechatemina_php'];
         $horaTermino = $_POST['horatemina_php'];
         $tiempoPrueba = $_POST['tiempotrascurido_php'];
-        /*echo("<h1?>Nombre: ". $nombre ."</h1><br>");
-        echo("<h1?>Respuestas: ". $respuestas ."</h1><br>");
-        echo("<h1?>Puntos Obtenidos: ". $puntos ."</h1><br>");
-        echo("<h1?>Fecha que termino practica: ". $fechaTermino ."</h1><br>");
-        echo("<h1?>Hora que termino practica: ". $horaTermino ."</h1><br>");
-        echo("<h1?>Tiempo que tardo la practica: ". $tiempoPrueba ."</h1><br>");*/
         echo("<form id='formularioresuelto'>
         <label id='nombre' for='nombre'>Nombre: ".$nombre." </label>
         <h4 id='pregunta'>1- ¿En qué estado se encuentra el agua de los glaciares?</h4>
@@ -34,14 +28,13 @@
     ?>
 
     <?php
-    echo("
-        <form id='exit' method='get' action='index.html' style='display: none;'>
+    echo("<form id='exit' method='get' action='../index.html' style='display: none;'>
         <button type='submit'>Salir</button>
         </form>");
     ?>
 
     <?php
-    $nombre_archivo = "resultado.txt";//Nombre base del arhcivo a crear
+    $nombre_archivo = "../textoPlano/resultado.txt";//Nombre base del arhcivo a crear
     $open = fopen($nombre_archivo,"a");//Abrimos el archivo en modo escritura
         fwrite($open,"Nombre: ".$nombre."\n");
         fwrite($open,"Respuestas:".$respuestas."\n");

@@ -1,6 +1,4 @@
 function mostrarFormulario() {
-    //alert("Hola")
-    //console.log(this.value);
     if (this.value==2) {
         document.getElementById("pFecha").removeAttribute("style");//Mostramos el capo para ingresar la fecha
         document.getElementById("dtPregunta").setAttribute("style",style="visibility: hidden;");//Mostramos el capo para ingresar la fecha
@@ -21,6 +19,7 @@ function mostrarFormulario() {
     }
     document.getElementById("butonConsultar").removeAttribute("style")
 }
+
 function enviarValores() {//nombre,opciones selecionadas, pts obtenidos, fecha que termini, horra que termini , tiempo en que realizo la prueba
     var op = document.getElementById("opciones");
     var select = op.options[op.selectedIndex].value;    
@@ -32,6 +31,7 @@ function enviarValores() {//nombre,opciones selecionadas, pts obtenidos, fecha q
     document.getElementById("opcion_selecionada").value = select;//Nombre
         
 }
+
 function validarFecha() {
     var resp = true;
     var value = document.getElementById("r1").value;
@@ -53,8 +53,6 @@ function validarFecha() {
     if (resp==false) {
         alert("Fecha incorrecta");
     }
-
-
 }
 
 function validarNumeroPregunta() {
@@ -63,7 +61,6 @@ function validarNumeroPregunta() {
         alert("Numero de pregunta debe ser menor que 11");
     }
 }
-
 
 window.onload = function () {
     document.getElementById("opciones").onmouseup= mostrarFormulario;
