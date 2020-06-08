@@ -68,3 +68,10 @@ Fecha que termino practica: 7/6/2020
 Hora que termino practica: 4:18 PM
 Tiempo que tardo la practica: 1 min
 
+Nombre: Rodrigo
+Respuestas:1 2 4 4 3 4 1 4 3 2 
+Puntos Obtenidos: 10
+Fecha que termino practica: 8/6/2020
+Hora que termino practica: 7:56am
+Tiempo que tardo la practica: 1 min
+

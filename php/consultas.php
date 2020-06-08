@@ -179,7 +179,7 @@ function tiemMaximo($arrayOrdenado){//Obtenemos el valor del maximo
     return $valorTiempo;
 }
 
-function tiemMinimo($arrayOrdenado){//Obtenemos el valos minimo
+function tiemMinimo($arrayOrdenado){//Obtenemos el valor minimo
     $posicionTiempo = strpos($arrayOrdenado[0],"Tiempo");
     $valorTiempo = substr($arrayOrdenado[0],$posicionTiempo+30);
     return $valorTiempo;

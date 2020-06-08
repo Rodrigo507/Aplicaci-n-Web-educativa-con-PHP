@@ -93,7 +93,7 @@ function aceptarRespuesta() {
             finalMinuto=hora2.getMinutes();
             totalminutos= finalMinuto-inicioMinuto;
             fechaTemina=hora2.getDate()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
-            var amPm = hora2.getHours() >= 12 ? 'pm' : 'am';
+            var amPm = hora2.getHours() >= 12 ? ' pm' : ' am';
             horaTemina =((hora2.getHours() + 11) % 12 + 1)+":"+hora2.getMinutes()+amPm;
             enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,horaTemina,totalminutos);
             document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
