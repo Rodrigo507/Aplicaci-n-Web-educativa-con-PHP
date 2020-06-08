@@ -27,21 +27,22 @@ if (sizeof($datos)!=0) {//Solo entra si hay datos en el array de datos
     }else if($valorSelecion==6) {//Lista de estudiantes que han fallado una determinada pregunta.
         estFallaron($datos,$dato);
     }
-    echo("<br>*******************************<br>");
-    echo("<h1>INFORMACION</h1>");
-    echo("<br>Cantidad de prácticas completadas: ".sizeof($datos)."<br>");
-    echo("<br>Tiempo máximo en resolver: ".tiemMaximo($ordenado));
-    echo("<br>Tiempo mínimo en resolver: ".tiemMinimo($ordenado));
-    echo("<br><br>");
-    echo("<br>Cantidad de estudiantes por puntajes correctos<br> ");
-    puntosObteCantidad($datos);//Muestra tabla con la cantidad de estudiantes por cada puntaje que se obtubo
-    echo("<br>Estadística de aciertos y fallas:<br><br>");
-    aciertFallas($datos);//Muestra una tabla que contiene # de pregunta cant aciertos y cant Fallas por pregunta
+    $res="<br>*******************************<br>"
+    ."<h1>INFORMACION</h1>"
+    ."<br>Cantidad de prácticas completadas: ".sizeof($datos)."<br>"
+    ."<br>Tiempo máximo en resolver: ".tiemMaximo($ordenado)
+    ."<br>Tiempo mínimo en resolver: ".tiemMinimo($ordenado)
+    ."<br><br>"
+    ."<br>Cantidad de estudiantes por puntajes correctos<br> "
+    .puntosObteCantidad($datos)
+    ."<br>Estadística de aciertos y fallas:<br><br>"
+    .aciertFallas($datos);
 
+    echo($res);
+    generarInforme($res);//Generamos el informe en txt
     echo("<br><br><form id='exit' method='get' action='../html/consultas.html' '>
         <button type='submit'>Salir</button>
         </form>");
-    //echo("<button onclick=".generarInforme()."> Llamar </buton>");
 }else{
     echo("<h1> NO HAY DATOS PARA PROCESAR</h1><br><br>");
     echo("<form id='exit' method='get' action='../html/consultas.html' '>
@@ -185,9 +186,10 @@ function tiemMinimo($arrayOrdenado){//Obtenemos el valor minimo
     return $valorTiempo;
 }
 function puntosObteCantidad($array){
+    $cad="";
     $cantidad=0;
     $cont =10;
-    echo("<br>Puntos Obetenidos&nbsp;&nbsp;&nbsp;&nbspCant. de estudiantes<br>");
+    $cad=$cad."<br>Puntos Obetenidos&nbsp;&nbsp;&nbsp;&nbsp;Cant. de estudiantes<br>";
     for ($z=0; $z <11 ; $z++) { 
         for ($i=0; $i < count($array); $i++) { 
             $pos1 = strpos($array[$i],"Obtenidos");
@@ -195,11 +197,12 @@ function puntosObteCantidad($array){
                 $cantidad++;
             }
         }
-        echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cont."&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;".$cantidad);
-        echo("<br>");
+        $cad=$cad."&nbsp;&nbsp;&nbsp;".$cont."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cantidad;
+        $cad=$cad."<br>";
         $cont--;
         $cantidad=0;
     }
+   return $cad; 
 }
 
 function valoresRespuesta($array,$numParcial){//Retorna un array con los valores que el usuario respondio a cada pregunta
@@ -215,6 +218,7 @@ function valoresRespuesta($array,$numParcial){//Retorna un array con los valores
 }
 
 function aciertFallas($array){
+    $cad="";
     $arrayRespuestasCorrecta = array(0=>"1", 1=>"2", 2=>"4", 3=>"4", 4=>"3", 5=>"4", 6=>"1", 7=>"4", 8=>"3", 9=>"2");//Clave de respuestas correcta
     $cantAciertas = array(0=>0, 1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0);//Guardamos las aciertas por pregunta
     $cantFallas =array(0=>0, 1=>0, 2=>0, 3=>0, 4=>0, 5=>0, 6=>0, 7=>0, 8=>0, 9=>0);//Guardamos las fallas por pregunta
@@ -229,13 +233,27 @@ function aciertFallas($array){
         }
         $respuesta_usur = array();//Para limpiar el array que contiene las respuestas del usuario
     }
-    echo("&nbsp;&nbsp;Pregunta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cantidad de Acierto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cantidad de fallas<br>");
+    $cad=$cad."&nbsp;&nbsp;Pregunta&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cantidad de Acierto&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cantidad de fallas<br>";
     for ($i=0; $i <10; $i++) {//Mostramos los datos de los array  
-        echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".($i+1)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cantAciertas[$i]."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cantFallas[$i]."<br>");
+        $cad=$cad."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".($i+1)."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cantAciertas[$i]."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cantFallas[$i]."<br>";
     }
+    return $cad;
 }
 
+function generarInforme($cadena){
+    $cadena = str_replace("\n","",$cadena);
+    $cadena = str_replace("*","",$cadena);
+    $cadena = str_replace("<br>","\n",$cadena);
+    $cadena = str_replace("<h1>","",$cadena);
+    $cadena = str_replace("</h1>","",$cadena);
+    $cadena = str_replace("&nbsp;"," ",$cadena);
+    $nombre_archivo = "../textoPlano/informe.txt";//Nombre base del arhcivo a crear
+    $open = fopen($nombre_archivo,"w+");//Abrimos el archivo en modo escritura
+    fwrite($open,$cadena);
+    fclose($open);//Cerramos el archivo txt
+}
 ?>
+
 
 
 </body>
