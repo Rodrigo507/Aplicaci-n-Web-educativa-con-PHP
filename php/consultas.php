@@ -47,9 +47,9 @@ if (sizeof($datos)!=0) {//Solo entra si hay datos en el array de datos
         <button type='submit' class='btn btn-danger'>Salir</button>
         </form>");
 }else{
-    echo("<h1> NO HAY DATOS PARA PROCESAR</h1><br><br>");
+    echo("<h1 id='warn'> NO HAY DATOS PARA PROCESAR</h1><br><br>");
     echo("<form id='exit' method='get' action='../html/consultas.html' '>
-            <button type='submit'>Salir</button>
+            <button type='submit' class='btn btn-danger'>Salir</button>
             </form>");
 
 }
