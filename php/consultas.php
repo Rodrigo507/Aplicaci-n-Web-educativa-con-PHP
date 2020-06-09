@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bd">
 <?php
 $valorSelecion = $_POST['opcion_selecionada'];
 $dato = $_POST['dato'];//Es el valor que enviar el que solicita la consulta(Numero de prueba - Fecha)
@@ -41,7 +44,7 @@ if (sizeof($datos)!=0) {//Solo entra si hay datos en el array de datos
     echo($res);
     generarInforme($res);//Generamos el informe en txt
     echo("<br><br><form id='exit' method='get' action='../html/consultas.html' '>
-        <button type='submit'>Salir</button>
+        <button type='submit' class='btn btn-danger'>Salir</button>
         </form>");
 }else{
     echo("<h1> NO HAY DATOS PARA PROCESAR</h1><br><br>");

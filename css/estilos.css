@@ -1,3 +1,7 @@
+*{
+    margin: 5px;
+}
+
 #contenedor,#consult_btn, #campos,h1{
     display: flex;
     justify-content: center;
@@ -15,4 +19,19 @@
 }
 #preguntas{
     margin: 8px;
+}
+.bd{
+    background-color: #D0DDE6;
+}
+h1,h3{
+    color: #7AD7F8;
+    text-shadow: 3px 3px 2px black;
+    font-family: 'Original Surfer', cursive;
+
+}
+h3{
+    color: #7D848C;
+    text-shadow: 3px 3px 2px #7AD7F8;
+    font-family: 'Original Surfer', cursive;
+
 }

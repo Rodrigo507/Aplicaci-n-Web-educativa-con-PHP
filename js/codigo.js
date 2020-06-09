@@ -16,26 +16,23 @@ function siguientePregunta() {
         console.log("siguiente"+contador);
         if (!document.getElementById("aceptar")) {//para el php
             document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
-            console.log("aaa");
-            console.log(contador);
             mostrarResultado(contador)
             Asignaropciones(contador);
             contador++;
         }else{//html
-            if (document.getElementById("aceptar").disabled == true) {
-            document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador]; 
-            document.getElementById("correcta").innerHTML="";
-            document.getElementById("aceptar").disabled=false;
-            uncheck();
-            Asignaropciones(contador);
+            if (document.getElementById("aceptar").disabled == true) {//Si ya se acepto la respuesta
+            document.getElementById("pregunta").innerHTML=(contador+2)+"- "+preguntas[contador];//Asignamos el contenido de la pregunta
+            document.getElementById("correcta").innerHTML="";//Limpiamos el parrafo que contiene si es correcta o no 
+            document.getElementById("aceptar").disabled=false;//Habilitamos el boton de haceptar
+            uncheck();//Limpiamos los radio buton 
+            Asignaropciones(contador);//Cambiamos a las siguientes opciones de la pregunta
             contador++;
             }else{
                 alert("Antes debes aceptar la respuesta ")
             }
         }
-        
-        if(contador==9){
-            document.getElementById("siguiente").style.display='none';
+        if(contador==9){//Al llegar a la 10 pregunta
+            document.getElementById("siguiente").style.display='none';//Ocultamos el boton de siguiente pregunta - En la pregunta 10 no aparece
             if (document.getElementById("exit")) {//Si existe el id exit en el documento tratadatos php
                 document.getElementById("exit").removeAttribute('style');//Habilitamos el form para mostrar el boton de salir 
             }
@@ -44,14 +41,15 @@ function siguientePregunta() {
 }
 sw=0;
 function aceptarRespuesta() {
-    if (verificarSelecion()==true) {
-        var respuesta = document.getElementById("formulario");
-        nombreEstudiante=respuesta[0].value;
-        if (sw==0) {
+    if (verificarSelecion()==true) {//Comprobamos que un radio buton se ha selecionado        
+        var respuesta = document.getElementById("formulario");//Obtenemos los datos del form
+        nombreEstudiante=respuesta[0].value;//Guardamos el nombre del estudiante
+        if (sw==0) {//Solo para la primera pregunta
             document.getElementById("nombre").innerHTML="Nombre: "+respuesta[0].value;//Asignamos el nombre del que realiza la practica
             respuesta[0].hidden=true//Ocultamos el input de nombre
             sw=1;
         }
+        //Verificamos si la respueta que seleciono es correcta o no
         if(contador==0&&respuesta[1].checked){//1
             document.getElementById("correcta").innerHTML="Correcta ✔";
             puntosObtenidos++;
@@ -85,30 +83,30 @@ function aceptarRespuesta() {
         }else{
             document.getElementById("correcta").innerHTML="Incorrecta ❌"; 
         }
-        RespuestaSelecionada();
-        document.getElementById("aceptar").disabled=true;
+        RespuestaSelecionada();//Asignamos la respuesta a la variable respuestasPrapreguntas
+        document.getElementById("aceptar").disabled=true;//Deshabilitamos el boton aceptar
         if (contador==9) {//Mostramos los resultados cuando haceptamos la ultima pregunta
-            document.getElementById("aceptar").style.display='none';
+            document.getElementById("aceptar").style.display='none';//Ocultamos el boton de aceptar en la ultima pregunta
             var hora2 = new Date();
-            finalMinuto=hora2.getMinutes();
+            finalMinuto=hora2.getMinutes();//Obtenemos los minutos
             totalminutos= finalMinuto-inicioMinuto;
             fechaTemina=hora2.getDate()+"/"+(hora2.getMonth()+1)+"/"+hora2.getFullYear();
-            var amPm = hora2.getHours() >= 12 ? ' pm' : ' am';
+            var amPm = hora2.getHours() >= 12 ? ' pm' : ' am';//Verificamos si es PM o AM
             horaTemina =((hora2.getHours() + 11) % 12 + 1)+":"+hora2.getMinutes()+amPm;
             enviarValores(nombreEstudiante,respuestasPrapreguntas,puntosObtenidos,fechaTemina,horaTemina,totalminutos);
             document.getElementById("resultados").setAttribute("style","visibility=true");//Hacemos visible el div que contiene los resultados
-            document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;
-            console.log(document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${totalminutos}min`);
+            document.getElementById("pts").innerHTML=`Puntos obtenidos: ${puntosObtenidos}`;//Mostramos los resultados 
+            document.getElementById("tiempo").innerHTML=`Tiempo Total de la prueba: ${totalminutos}min`;
         }
     }else{
     alert("Debe seleccionar una opción antes de aceptar su respuesta")
     }
 }
-function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio buttons
+function RespuestaSelecionada() {//Funcion que obtiene el valor del Radio buttons y se le asignamos a la variable de respuesta
     var formularioRespuestas = document.forms[0].respuesta;//Obtenemos la cantidad de elemtentos del formulario con name "Respuesta"
     for (let index = 0; index < formularioRespuestas.length; index++) {//Recorremos todos los elementos
         if (formularioRespuestas[index].checked) {//Verificamos cual tiene el atributo cheked("Selecionado")
-            respuestasPrapreguntas+=formularioRespuestas[index].value+" "; 
+            respuestasPrapreguntas+=formularioRespuestas[index].value+" ";
             break;
             }
     } 

@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRACTICA RESUELTA</title>
     <script src="../js/codigo.js"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+</head >
+<body class="bd">
     <?php
     //Obtenemos los datos de la practica resuelta y la asignamos a la variables
         $nombre = $_POST['nombre_php'];
@@ -24,15 +27,14 @@
         <input type='radio' value='3' name='respuesta'> <label  id='r3'>3- Gaseoso </label><br>
         <input type='radio' value='4' name='respuesta'> <label  id='r4'>4- Plasma </label><br>
         <p id='correcta'></p>
-        <!-- <input id='siguiente' type='submit' value='Siguiente pregunta'> -->
-        <input id='siguiente' type='button' value='Siguiente pregunta'>
+        <button id='siguiente' type='button' class='btn btn-secondary'>Siguiete Pregunta</button>
     </form>");
     ?>
 
     <?php
         //Boton de salir (index)
     echo("<form id='exit' method='get' action='../index.html' style='display: none;'>
-        <button type='submit'>Salir</button>
+        <button type='submit' class='btn btn-danger'>Salir</button>
         </form>");
     ?>
 
